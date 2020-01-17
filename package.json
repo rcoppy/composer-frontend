@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/rcoppy/babbel-calculator/issues"
   },
-  "homepage": "https://github.com/rcoppy/babbel-calculator#readme"
+  "homepage": "https://github.com/rcoppy/babbel-calculator#readme",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
 }
