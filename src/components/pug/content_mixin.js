@@ -1,4 +1,7 @@
-mixin content_mixin
+const ContentMixin = ({children}) => pug
   .wrapper.content
     .container.content
-      block
+      = children
+;
+
+export default ContentMixin;
