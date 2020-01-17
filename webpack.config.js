@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
+    template: "./src/index.html",
+    filename: "./index.html"
 });
 
 module.exports = (env, options) => {
@@ -43,6 +43,13 @@ module.exports = (env, options) => {
                         },
                         {
                             loader: 'css-loader', // translates CSS into CommonJS modules
+                            options: {
+                                modules: {
+                                    localIdentName: "[name]__[local]___[hash:base64:5]",
+                                },
+                                importLoaders: 1,
+                                sourceMap: true
+                            }
                         },
                         {
                             loader: 'postcss-loader', // Run post css actions
