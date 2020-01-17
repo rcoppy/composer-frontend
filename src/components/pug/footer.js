@@ -1,6 +1,6 @@
-const Footer = ({children}) => pug
+const Footer = ({children}) => pug`
   .container
     = children
-;
+`;
 
 export default Footer;

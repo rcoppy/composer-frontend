@@ -1,4 +1,4 @@
-const LoginModal = () => pug
+const LoginModal = () => pug`
   #loginModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='loginModalLabel' aria-hidden='true')
     .modal-dialog(role='document')
       .modal-content
@@ -21,6 +21,6 @@ const LoginModal = () => pug
           small #[a(href="forgot_password_form.pug") Forgot your password?]
           br
           a.btn.btn-primary(href="user_dashboard.pug") Log in
-;
+`;
 
 export default LoginModal;

@@ -5,9 +5,9 @@ import Footer from './pug/footer';
 import Navbar from './pug/navbar';
 import LoginModal from './pug/login_modal';
 
-const App = () => pug
+const App = () => pug`
   LoginModal
-  
+
   Header
     h1 Best Calculator
     Navbar
@@ -20,6 +20,6 @@ const App = () => pug
 
   Footer
     p This is a footer
-;
+`;
 
 export default App;
