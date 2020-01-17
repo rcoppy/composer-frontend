@@ -2,6 +2,13 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+const htmlWebpackPlugin = new HtmlWebPackPlugin({
+  template: "./src/index.html",
+  filename: "./index.html"
+});
+
 module.exports = (env, options) => {
     return {
         // watch: true,
@@ -13,7 +20,7 @@ module.exports = (env, options) => {
             filename: '[name].js',
             path: path.resolve(__dirname, 'dist'),
         },
-        plugins: [new MiniCssExtractPlugin("[name].css")],
+        plugins: [new MiniCssExtractPlugin("[name].css"), htmlWebpackPlugin],
         module: {
             rules: [{
                     test: /\.js$/,
