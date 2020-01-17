@@ -1,0 +1,19 @@
+{
+  "name": "babbel-calculator",
+  "version": "1.0.0",
+  "description": "for the folks at babbel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcoppy/babbel-calculator.git"
+  },
+  "author": "Alex Rupp-Coppi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rcoppy/babbel-calculator/issues"
+  },
+  "homepage": "https://github.com/rcoppy/babbel-calculator#readme"
+}
