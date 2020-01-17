@@ -36,6 +36,7 @@ http.createServer(function (req, res) {
         '.jpg': 'image/jpeg',
         '.wav': 'audio/wav',
         '.mp3': 'audio/mpeg',
+        '.ogg': 'audio/ogg',
         '.svg': 'image/svg+xml',
         '.pdf': 'application/pdf',
         '.doc': 'application/msword'
