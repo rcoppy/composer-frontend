@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = ({children}) => pug` 
-  .container
+  header
     = children
 `;
 

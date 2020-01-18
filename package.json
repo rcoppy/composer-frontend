@@ -42,6 +42,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "file-loader": "^5.0.2",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "path": "^0.12.7",

@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Footer = ({children}) => pug`
-  .container
-    = children
+  footer
+    .container
+      = children
 `;
 
 export default Footer;

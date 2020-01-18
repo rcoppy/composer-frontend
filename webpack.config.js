@@ -42,14 +42,15 @@ module.exports = (env, options) => {
                             }
                         },
                         {
-                            loader: 'css-loader', // translates CSS into CommonJS modules
+                            loader: 'css-loader'//, // translates CSS into CommonJS modules
+                            /* This configuration is for a different approach to styling--breaks bootstrap
                             options: {
                                 modules: {
                                     localIdentName: "[name]__[local]___[hash:base64:5]",
                                 },
                                 importLoaders: 1,
                                 sourceMap: true
-                            }
+                            }*/
                         },
                         {
                             loader: 'postcss-loader', // Run post css actions
