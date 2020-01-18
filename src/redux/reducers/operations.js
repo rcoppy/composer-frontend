@@ -41,7 +41,7 @@ export default function (state = initialState, action) {
                     newResult = parseFloat(state.currentInputString);
                     newInputString = '' + newResult;
                 } else { 
-                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(currentInputString));
+                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(state.currentInputString));
                     newInputString = '' + newResult;
                     newQueuedOperator = null;
                 }
@@ -50,7 +50,7 @@ export default function (state = initialState, action) {
                     newQueuedOperator = operation;
                     newInputString = '0';
                 } else {
-                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(currentInputString));
+                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(state.currentInputString));
                     newInputString = '' + newResult;
                     newQueuedOperator = operation;
                 }

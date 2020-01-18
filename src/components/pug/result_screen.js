@@ -6,10 +6,13 @@ const ResultScreen = props => {
     const currentInput = useSelector(state => state.currentInputString);
     const result = useSelector(state => state.result);
 
-    return (pug`
-    .result-screen
-      span.input= currentInput
-      span.result= result
-`)};
+    console.log(result);
+
+    return (
+    <div className="result-screen">
+        <span className="input">{currentInput}</span>
+        <span className="result">{result}</span>
+    </div>)
+};
 
 export default ResultScreen;

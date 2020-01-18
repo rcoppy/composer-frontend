@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case APPEND_DECIMAL: {
 
-            let newInputString = currentInputString;
+            let newInputString = state.currentInputString;
             const regexp = /.*\./
             if (!regexp.test(state.currentInputString)) {
                 newInputString += '.';
@@ -28,7 +28,10 @@ export default function (state = initialState, action) {
         case APPEND_DIGIT: {
             const { digit } = action.payload;
 
-            let newInputString = currentInputString === '0' ? '' + digit : currentInputString + digit;
+            let newInputString = state.currentInputString === '0' ? '' + digit : state.currentInputString + digit;
+
+            // debug
+            // console.log(`appended ${digit}`);
 
             return {
                 ...state,
@@ -37,7 +40,7 @@ export default function (state = initialState, action) {
             };
         }
         case DELETE_DIGIT: {
-            let newInputString = currentInputString.length > 0 ? currentInputString.slice(0, -1) : '';
+            let newInputString = state.currentInputString.length > 0 ? state.currentInputString.slice(0, -1) : '';
 
             return {
                 ...state,

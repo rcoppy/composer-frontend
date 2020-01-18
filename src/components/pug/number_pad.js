@@ -11,12 +11,11 @@ const NumberPad = () => {
   return (pug`
       .number-pad
         
-        // keys #1-9
-        - var n = 0
-        while n < 9
-          - n++
-          Button(variant="secondary" size="lg" key=n onClick=() => dispatch(appendDigit(n))).numerals #{n}
+        // keys #1-9; previously was using a while loop; has some scoping complications with callback
+        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          Button(variant="secondary" size="lg" key=val onClick=() => dispatch(appendDigit(val))).numerals #{val}
 
+        - var n = 9
         // decimal key
         Button(variant="info" size="lg" key=++n onClick=() => dispatch(appendDecimal())) .
 
