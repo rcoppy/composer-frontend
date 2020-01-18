@@ -12,14 +12,5 @@
         justify-content: space-around;
     }
 
-    .operator {
-        margin: $pad_button_margin; 
-        text-align: center;
-        line-height: 100%;
-        display: flex; 
-        justify-content: center;
-        align-items: center;
-
-        font-size: $operator_font_size;
-    }
+    
 }

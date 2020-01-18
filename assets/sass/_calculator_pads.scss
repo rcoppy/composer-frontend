@@ -5,4 +5,17 @@
         flex-direction: column;
         align-items: center;
     }
+
+    button {
+        margin: $pad_button_margin; 
+        text-align: center;
+        line-height: 100%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+
+        &.operator {
+            font-size: $operator_font_size;
+        }
+    }
 }
