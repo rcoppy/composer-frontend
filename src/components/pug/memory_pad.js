@@ -2,14 +2,35 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faDownload, faTrashAlt, faEraser } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
+import { useDispatch, useSelector } from "react-redux";
+import { eraseResult, deleteCache, cacheResult, loadCache } from "./store/counter/actions";
 
+// buttons for handling the result, stored result
 const MemoryPad = props => {
     
-    return pug`
+    const existsCache = useSelector(state => state.cache.exists);
+    const dispatch = useDispatch();
+
+    const manageCache = existsCache ? () => dispatch(loadCache()) : () => dispatch(cacheResult());
+    const handleDelete = () => {
+        if (existsCache) {
+            dispatch(deleteCache);
+        }
+    }
+
+    return (pug`
     .memory-pad 
-      Button(variant="warning").operator #[FontAwesomeIcon(icon=faEraser)]
-      Button(variant="secondary").operator #[FontAwesomeIcon(icon=props.existsCache ? faDownload : faSave)]
-      Button(variant="secondary" disabled=!props.existsCache).operator #[FontAwesomeIcon(icon=faTrashAlt)]
-`};
+      // clear the displayed result
+      Button(variant="warning" onClick=() => dispatch(eraseResult())).operator 
+        FontAwesomeIcon(icon=faEraser)
+
+      // either load in or save out cache/result
+      Button(variant="secondary" onClick=manageCache).operator
+        FontAwesomeIcon(icon=existsCache ? faDownload : faSave)
+
+      // trash the cache if it exists
+      Button(variant="secondary" onClick=handleDelete disabled=!existsCache).operator
+        FontAwesomeIcon(icon=faTrashAlt)
+`)};
 
 export default MemoryPad;

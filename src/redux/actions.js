@@ -14,3 +14,22 @@ export const deleteDigit = () => ({
     payload: {}
 });
 
+export const eraseResult = () => ({
+    type: ERASE_RESULT,
+    payload: {}
+});
+
+export const deleteCache = () => ({
+    type: DELETE_CACHE,
+    payload: {}
+});
+
+export const cacheResult = () => ({
+    type: CACHE_RESULT,
+    payload: {}
+});
+
+export const loadCache = () => ({
+    type: LOAD_CACHE,
+    payload: {}
+});
