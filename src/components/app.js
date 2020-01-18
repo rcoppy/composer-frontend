@@ -8,12 +8,7 @@ import Navbar from './pug/navbar';
 
 const App = () => pug`
   Header(
-    content=${pug`h1 Best Calculator`}
-    navLinks=${pug`
-      span #[a(href='') Home]
-      span #[a(href='') About]
-      span #[a(href='') Login]
-    `})
+    content=${pug`h1 Best Calculator`})
 
   ContentMixin
     h2 Hello! Welcome to calculator

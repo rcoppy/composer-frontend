@@ -47,13 +47,13 @@ body {
 
 .wrapper .content {
     // z-index: 1;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: $content_padding_top;
+    padding-bottom: $content_padding_bottom;
     box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
-    min-height: calc(100vh - #{$header_height} - #{$footer_height} - 2rem);
+    min-height: calc(100vh - #{$header_height} - #{$footer_height} - #{$content_padding_total});
 
     @include media-breakpoint-down(md) {
-        min-height: calc(100vh - #{$mobile_header_height} - #{$mobile_footer_height} - 2rem);
+        min-height: calc(100vh - #{$mobile_header_height} - #{$mobile_footer_height} - #{$content_padding_total});
     }
 }
 

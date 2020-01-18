@@ -5,8 +5,9 @@ const Header = ({content, navLinks}) => pug`
   header
     .container
       = content
-    Navbar
-      = navLinks
+    if navLinks
+      Navbar
+        = navLinks
 `;
 
 export default Header;
