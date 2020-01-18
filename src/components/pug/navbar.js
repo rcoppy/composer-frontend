@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Navbar = ({children}) => pug`
   .navbar
     .container

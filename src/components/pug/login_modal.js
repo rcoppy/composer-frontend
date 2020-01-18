@@ -1,3 +1,5 @@
+import React from 'react';
+
 const LoginModal = () => pug`
   #loginModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='loginModalLabel' aria-hidden='true')
     .modal-dialog(role='document')
