@@ -7,13 +7,13 @@ import Navbar from './pug/navbar';
 // import '../../assets/sass/main.scss';
 
 const App = () => pug`
-  Header
-    .container
-      h1 Best Calculator
-    Navbar
+  Header(
+    content=${pug`h1 Best Calculator`}
+    navLinks=${pug`
       span #[a(href='') Home]
       span #[a(href='') About]
       span #[a(href='') Login]
+    `})
 
   ContentMixin
     h2 Hello! Welcome to calculator
