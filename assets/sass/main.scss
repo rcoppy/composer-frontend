@@ -115,9 +115,20 @@ footer {
     position: absolute;
     height: $footer_height;
 
+    ul {
+        list-style-type: disc;
+    }
+    ul li {
+        display: inline;
+        margin-right: 0.75rem;
+    }
+
     @include media-breakpoint-down(md) {
         height: $mobile_footer_height;
         // bottom: $mobile_footer_height;
+        ul li {
+            display: block;
+        }
     }
 
     width: 100%;

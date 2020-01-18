@@ -32,7 +32,7 @@ $header_height: 16vh + $navbar_height;
 $footer_height: 20vh;
 $gallery_card_height: (100vh - $header_height - $footer_height - 6vh) / 1.5;
 
-$mobile_header_height: 65vh + $navbar_height;
+$mobile_header_height: $header_height;
 $mobile_footer_height: 40vh;
 $mobile_gallery_card_height: 40vh;
 

@@ -15,11 +15,17 @@ const App = () => pug`
     content=${pug`h1 Best Calculator #[FontAwesomeIcon(icon=faCalculator)]`})
 
   ContentMixin
-    h2 Hello! Welcome to calculator
+    h2 *beep boop*
     CalculatorPads
 
   Footer
-    p This is a footer
+    p by #[a(href="http://alexrupp.com/") Alex], Jan 2020
+    p.mb-0 Using!
+    ul
+      li react-bootstrap
+      li fontawesome
+      li google fonts
+      li subtlepatterns
 `;
 
 export default App;

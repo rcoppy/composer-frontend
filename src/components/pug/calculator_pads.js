@@ -6,10 +6,13 @@ import MemoryPad from './memory_pad';
 
 const CalculatorPads = () => pug`
     .calculator-pads
-      NumberPad
-      OperatorPad
-      ResultScreen
-      MemoryPad
+      .top  
+        ResultScreen
+        MemoryPad
+      .bottom
+        NumberPad
+        OperatorPad
+      
 `;
 
 export default CalculatorPads;

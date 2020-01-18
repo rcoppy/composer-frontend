@@ -4,11 +4,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: stretch; 
 
-    width: 22%;
+    // width: 22%; redundant because of flexbox
     margin: 0;
 
     @include media-breakpoint-down(md) {
-        width: 90%;
+        // width: 90%;
         //margin: 0 auto;
     }
 
