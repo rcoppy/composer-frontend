@@ -10,13 +10,20 @@ const NumberPad = () => {
 
   return (pug`
       .number-pad
+        
+        // keys #1-9
         - var n = 0
         while n < 9
           - n++
           Button(variant="secondary" size="lg" key=n onClick=() => dispatch(appendDigit(n))).numerals #{n}
 
+        // decimal key
         Button(variant="info" size="lg" key=++n onClick=() => dispatch(appendDecimal())) .
+
+        // zero key
         Button(variant="secondary" size="lg" key=++n onClick=() => dispatch(appendDigit(0))).numerals 0
+
+        // backspace key
         Button(variant="info" size="lg" key=++n onClick=() => dispatch(deleteDigit()))
           FontAwesomeIcon(icon=faBackspace)
 `)};

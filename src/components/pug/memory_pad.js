@@ -11,6 +11,7 @@ const MemoryPad = props => {
     const existsCache = useSelector(state => state.cache.exists);
     const dispatch = useDispatch();
 
+    // onClick helper functions
     const manageCache = existsCache ? () => dispatch(loadCache()) : () => dispatch(cacheResult());
     const handleDelete = () => {
         if (existsCache) {

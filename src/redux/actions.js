@@ -1,3 +1,11 @@
+import { APPEND_DIGIT } from './actionTypes';
+import { APPEND_DECIMAL } from './actionTypes';
+import { DELETE_DIGIT } from './actionTypes';
+import { ERASE_RESULT } from './actionTypes';
+import { DELETE_CACHE } from './actionTypes';
+import { CACHE_RESULT } from './actionTypes';
+import { LOAD_CACHE } from './actionTypes';
+import { QUEUE_OPERATION} from './actionTypes';
 
 export const appendDigit = digit => ({
     type: APPEND_DIGIT,
