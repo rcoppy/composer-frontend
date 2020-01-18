@@ -33,3 +33,8 @@ export const loadCache = () => ({
     type: LOAD_CACHE,
     payload: {}
 });
+
+export const queueOperation = operation => ({
+    type: QUEUE_OPERATION,
+    payload: { operation }
+});
