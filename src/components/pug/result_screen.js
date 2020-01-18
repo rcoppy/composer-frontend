@@ -7,7 +7,7 @@ const ResultScreen = props => {
     
     return (pug`
     .result-screen
-      span = result
+      span= result
 `)};
 
 export default ResultScreen;
