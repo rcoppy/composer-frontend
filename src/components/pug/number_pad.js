@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBackspace, faDotCircle } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { appendDigit, appendDecimal, deleteDigit } from "../../redux/actions";
 
 const NumberPad = () => {

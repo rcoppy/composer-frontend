@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faDownload, faTrashAlt, faEraser } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
-import { eraseResult, deleteCache, cacheResult, loadCache } from "./store/counter/actions";
+import { eraseResult, deleteCache, cacheResult, loadCache } from "../../redux/actions";
 
 // buttons for handling the result, stored result
 const MemoryPad = props => {
     
-    const existsCache = useSelector(state => state.cache.exists);
+    const existsCache = useSelector(state => state.existsCache);
     const dispatch = useDispatch();
 
     // onClick helper functions

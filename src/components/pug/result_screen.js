@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 
 const ResultScreen = props => {
     
-    const result = useSelector(state => state.currentResult);
-    
+    const currentInput = useSelector(state => state.currentInputString);
+    const result = useSelector(state => state.result);
+
     return (pug`
     .result-screen
-      span= result
+      span.input= currentInput
+      span.result= result
 `)};
 
 export default ResultScreen;

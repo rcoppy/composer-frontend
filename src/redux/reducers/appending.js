@@ -1,6 +1,7 @@
 import {
     APPEND_DECIMAL,
-    APPEND_DIGIT
+    APPEND_DIGIT,
+    DELETE_DIGIT
 } from "../actionTypes";
 
 const initialState = {
