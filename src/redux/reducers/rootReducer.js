@@ -73,7 +73,7 @@ export default function (state = initialState, action) {
             if (newInputString.length < 1) {
                 newInputString = '0';
             }
-            
+
             return {
                 ...state,
                 currentInputString: newInputString
@@ -98,6 +98,7 @@ export default function (state = initialState, action) {
                 }
             } else {
                 if (!state.queuedOperator) {
+                    newResult = parseFloat(state.currentInputString);
                     newQueuedOperator = operation;
                     newInputString = '0';
                 } else {
