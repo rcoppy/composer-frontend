@@ -6,10 +6,8 @@ import {
 } from "../actionTypes";
 
 const initialState = {
-    result: 0,
     cachedResult: null,
-    existsCache: false,
-    currentInputString: '0'
+    existsCache: false
 }
 
 export default function (state = initialState, action) {

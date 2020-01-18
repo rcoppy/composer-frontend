@@ -6,8 +6,7 @@ import { OPERATORS } from '../constants';
 
 const initialState = {
     result: 0,
-    queuedOperator: null,
-    currentInputString: '0',
+    queuedOperator: null
 }
 
 // get expression for designated operator
@@ -32,25 +31,25 @@ export default function (state = initialState, action) {
             
             const { operation } = action.payload;
 
-            let newQueuedOperator = state.queuedOperator;
-            let newResult = state.result;
-            let newInputString = state.currentInputString;
+            let newQueuedOperator = state.operations.queuedOperator;
+            let newResult = state.operations.result;
+            let newInputString = state.appending.currentInputString;
 
             if (operation === OPERATORS.COMPUTE) {
-                if (!state.queuedOperator) {
-                    newResult = parseFloat(state.currentInputString);
+                if (!state.operations.queuedOperator) {
+                    newResult = parseFloat(state.appending.currentInputString);
                     newInputString = '' + newResult;
                 } else { 
-                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(state.currentInputString));
+                    newResult = funcFromOp(state.operations.queuedOperator)(state.operations.result, parseFloat(state.appending.currentInputString));
                     newInputString = '' + newResult;
                     newQueuedOperator = null;
                 }
             } else {
-                if (!state.queuedOperator) {
+                if (!state.operations.queuedOperator) {
                     newQueuedOperator = operation;
                     newInputString = '0';
                 } else {
-                    newResult = funcFromOp(state.queuedOperator)(state.result, parseFloat(state.currentInputString));
+                    newResult = funcFromOp(state.operations.queuedOperator)(state.operations.result, parseFloat(state.appending.currentInputString));
                     newInputString = '' + newResult;
                     newQueuedOperator = operation;
                 }
@@ -58,9 +57,11 @@ export default function (state = initialState, action) {
 
             return {
                 ...state,
-                currentInputString: newInputString,
-                result: newResult,
-                queuedOperator: newQueuedOperator
+                appending: { currentInputString: newInputString },
+                operations: {
+                    result: newResult,
+                    queuedOperator: newQueuedOperator
+                }
             };
         }
         default: 

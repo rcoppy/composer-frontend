@@ -8,11 +8,16 @@ const ResultScreen = props => {
 
     console.log(result);
 
-    return (
-    <div className="result-screen">
-        <span className="input">{currentInput}</span>
-        <span className="result">{result}</span>
-    </div>)
+    return (pug`
+    .result-screen
+      span.input= currentInput
+      span.result= result
+    `)
 };
 
 export default ResultScreen;
+
+/* <div className="result-screen">
+<span className="input">{currentInput}</span>
+<span className="result">{result}</span>
+</div>*/
