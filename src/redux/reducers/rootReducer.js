@@ -70,7 +70,10 @@ export default function (state = initialState, action) {
         }
         case DELETE_DIGIT: {
             let newInputString = state.currentInputString.length > 0 ? state.currentInputString.slice(0, -1) : '';
-
+            if (newInputString.length < 1) {
+                newInputString = '0';
+            }
+            
             return {
                 ...state,
                 currentInputString: newInputString
