@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700|Playfair+Display&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700|Playfair+Display&display=swap');
 
 @import "variables";
 @import "custom";
@@ -19,8 +19,8 @@
 
 body {
     background-color: lighten(blue, 40%);
-    background-image: url('../images/blue_blurred_small.jpg');
-    background-size: cover;
+    background-image: url('../images/triangle-mosaic.png');
+    background-repeat: repeat;
     background-attachment: fixed;
 
     position: relative;
@@ -49,7 +49,7 @@ body {
     // z-index: 1;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    box-shadow: 0 0 4rem darken(cadetblue, 40%);
+    box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
     min-height: calc(100vh - #{$header_height} - #{$footer_height} - 2rem);
 
     @include media-breakpoint-down(md) {
@@ -67,8 +67,8 @@ body {
     // margin-top: 1rem;
     // margin-bottom: 1rem;
 
-    background-color: darken(rgba($ocean_blue, 0.4), 60%);
-    box-shadow: 0 0 2rem darken(rgba($ocean_blue, 0.7), 60%);
+    background-color: rgba(159, 117, 85, 0.4); //darken(rgba($primary, 0.4), 60%);
+    box-shadow: 0 0 2rem darken(rgba($dark_transparent_primary, 0.7), 60%);
 
     border-radius: 3px;
 
@@ -79,9 +79,9 @@ body {
 
 header,
 footer {
-    background-color: darken(rgb(100, 0, 255), 40%);
-    background-image: url('../images/black_blurred_small.jpg');
-    background-size: cover;
+    background-color: darken(rgb(228, 223, 235), 40%);
+    background-image: url('../images/herringbone.png');
+    background-repeat: repeat;
     background-position-y: center;
     background-attachment: fixed;
 
@@ -95,7 +95,7 @@ header {
         height: $mobile_header_height;
     }
 
-    box-shadow: 0 0 2rem darken(cadetblue, 30%);
+    box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
     position: relative;
     // z-index: 2;
 
@@ -104,11 +104,6 @@ header {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-}
-
-h1,
-h2 {
-    filter: drop-shadow(0 3px 0.75rem darken($header_color, 70%));
 }
 
 footer {

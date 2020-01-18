@@ -42,7 +42,7 @@
     }
 
     span:hover {
-        background-color: lighten($navbar_color, 5%);
-        border-bottom: $border_bottom_width solid lighten($navbar_color, 25%);
+        background-color: darken($navbar_color, 5%);
+        border-bottom: $border_bottom_width solid $hyperlink_hover_color;
     }
 }
