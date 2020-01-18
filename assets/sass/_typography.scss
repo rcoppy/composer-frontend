@@ -6,12 +6,18 @@
 @include media-breakpoint-up(xl) { ... }
 */
 
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Shadows+Into+Light&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Press+Start+2P|Shadows+Into+Light&display=swap');
 
 .numerals {
     font-family: 'Shadows Into Light', sans-serif;
     font-weight: bold;
     font-size: $numeral_font_size;
+}
+
+.result-screen {
+    font-size: $result_screen_font_size;
+    font-family: 'Press Start 2P', sans-serif;
 }
 
 body {
