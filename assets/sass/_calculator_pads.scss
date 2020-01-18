@@ -1,0 +1,7 @@
+.calculator-pads {
+    display: flex;
+
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+    }
+}

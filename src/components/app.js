@@ -3,7 +3,7 @@ import Header from './pug/header';
 import ContentMixin from './pug/content_mixin'
 import Footer from './pug/footer';
 import Navbar from './pug/navbar';
-import NumberPad from './pug/number_pad';
+import CalculatorPads from './pug/calculator_pads';
 
 // import '../../assets/sass/main.scss';
 
@@ -13,7 +13,7 @@ const App = () => pug`
 
   ContentMixin
     h2 Hello! Welcome to calculator
-    NumberPad
+    CalculatorPads
 
   Footer
     p This is a footer

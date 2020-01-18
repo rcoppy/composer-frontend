@@ -1,0 +1,19 @@
+.operator-pad {
+    
+    display: flex; 
+    flex-direction: column;
+
+    width: 15%;
+    
+    @include media-breakpoint-down(md) {
+        flex-direction: row;
+        max-width: 90%;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    .operator {
+        margin: $pad_button_margin; 
+        text-align: center;
+    }
+}
