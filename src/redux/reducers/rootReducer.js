@@ -3,7 +3,7 @@ import {
     APPEND_DIGIT,
     DELETE_DIGIT,
     QUEUE_OPERATION,
-    ERASE_RESULT,
+    ERASE_SCREEN,
     DELETE_CACHE,
     CACHE_RESULT,
     LOAD_CACHE
@@ -34,7 +34,7 @@ const funcFromOp = operation => {
         case OPERATORS.DIVIDE: 
             return (a, b) => a / b;
         default: 
-            return (a, b=null) => a;
+            return (a, b=null) => b;
     }
 }
 
@@ -111,10 +111,10 @@ export default function (state = initialState, action) {
                 queuedOperator: newQueuedOperator
             };
         }
-        case ERASE_RESULT: {
+        case ERASE_SCREEN: {
             return {
                 ...state,
-                result: 0
+                currentInputString: '0'
             }
         }
         case DELETE_CACHE: {

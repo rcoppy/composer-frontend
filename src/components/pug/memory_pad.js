@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faDownload, faTrashAlt, faEraser } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
-import { eraseResult, deleteCache, cacheResult, loadCache } from "../../redux/actions";
+import { eraseScreen, deleteCache, cacheResult, loadCache } from "../../redux/actions";
 
 // buttons for handling the result, stored result
 const MemoryPad = props => {
@@ -15,14 +15,14 @@ const MemoryPad = props => {
     const manageCache = existsCache ? () => dispatch(loadCache()) : () => dispatch(cacheResult());
     const handleDelete = () => {
         if (existsCache) {
-            dispatch(deleteCache);
+            dispatch(deleteCache());
         }
     }
 
     return (pug`
     .memory-pad 
       // clear the displayed result
-      Button(variant="warning" onClick=() => dispatch(eraseResult())).operator 
+      Button(variant="warning" onClick=() => dispatch(eraseScreen())).operator 
         FontAwesomeIcon(icon=faEraser)
 
       // either load in or save out cache/result

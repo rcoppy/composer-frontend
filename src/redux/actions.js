@@ -1,7 +1,7 @@
 import { APPEND_DIGIT } from './actionTypes';
 import { APPEND_DECIMAL } from './actionTypes';
 import { DELETE_DIGIT } from './actionTypes';
-import { ERASE_RESULT } from './actionTypes';
+import { ERASE_SCREEN } from './actionTypes';
 import { DELETE_CACHE } from './actionTypes';
 import { CACHE_RESULT } from './actionTypes';
 import { LOAD_CACHE } from './actionTypes';
@@ -22,8 +22,8 @@ export const deleteDigit = () => ({
     payload: {}
 });
 
-export const eraseResult = () => ({
-    type: ERASE_RESULT,
+export const eraseScreen = () => ({
+    type: ERASE_SCREEN,
     payload: {}
 });
 
