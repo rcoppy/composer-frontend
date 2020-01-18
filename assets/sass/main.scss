@@ -71,7 +71,7 @@ body {
     background-color: rgba(159, 117, 85, 0.4); //darken(rgba($primary, 0.4), 60%);
     box-shadow: 0 0 2rem darken(rgba($dark_transparent_primary, 0.7), 60%);
 
-    border-radius: 3px;
+    border-radius: 10px;
 
     @include media-breakpoint-down(md) {
         max-width: 95%;

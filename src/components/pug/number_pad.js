@@ -6,8 +6,9 @@ const NumberPad = () => pug`
       - var n = 0
       while n < 9
         - n++
-        Button #{n}
-      Button 0
+        Button(variant="secondary" size="lg").numerals #{n}
+      .empty
+      Button(variant="secondary" size="lg").numerals 0
 `;
 
 export default NumberPad;

@@ -4,6 +4,8 @@ $dark_transparent_ocean_blue: darken(rgba($ocean_blue, 0.4), 60%);
 $primary: rgb(228, 114, 27);
 $dark_transparent_primary: darken(rgba($primary, 0.4), 60%);
 
+$secondary: desaturate(lighten(rgba(158, 112, 78, 0.85), 7%), 40%);
+
 $container_background_color: lighten(desaturate(rgba(159, 117, 85, 0.4),25%),25%);
 $navbar_color: saturate(lighten(rgba($container_background_color, 0.3), 5%), 6%); // lighten(rgba($primary, 0.3), 30%);
 
@@ -11,7 +13,7 @@ $hyperlink_color: darken($primary, 10%);
 $hyperlink_hover_color: desaturate(lighten($primary, 40%), 10%);
 
 $text_color_light: desaturate(darken(rgba(250, 229, 212, 0.85), 2%), 40%);
-$text_color_dark: desaturate(lighten(rgba(158, 112, 78, 0.85), 7%), 40%);
+$text_color_dark: $secondary;
 
 $text_color: $text_color_dark;
 $header_text_color: $text_color_dark;
