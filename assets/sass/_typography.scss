@@ -1,0 +1,67 @@
+/*
+@include media-breakpoint-up(xs) { ... }
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }
+*/
+
+//@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Press+Start+2P|Shadows+Into+Light&display=swap');
+
+.numerals {
+    font-family: 'Shadows Into Light', sans-serif;
+    font-weight: bold;
+    font-size: $numeral_font_size;
+}
+
+.result-screen {
+    font-size: $result_screen_font_size;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+body {
+
+    a {
+        color: $hyperlink_color;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: $hyperlink_hover_color;
+        text-decoration: none;
+    }
+
+
+    font-family: 'Indie Flower', sans-serif;
+    color: $text_color;
+
+    h2 {
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+
+    // on smaller screens need bigger font
+    font-size: 0.95rem;
+
+    @include media-breakpoint-up(md) {
+        font-size: 0.95rem;
+    }
+}
+
+header {
+    font-family: 'Indie Flower', serif;
+    color: $header_text_color;
+    
+    h1 {
+        font-size: 5rem;
+        @include media-breakpoint-down(md) {
+            font-size: 4rem;
+        }
+    }
+}
+
+h1,
+h2 {
+    // filter: drop-shadow(0 0 0.3rem darken($header_text_color, 70%));
+}

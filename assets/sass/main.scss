@@ -1,0 +1,177 @@
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700|Playfair+Display&display=swap');
+
+@import "variables";
+@import "custom";
+
+@import '~bootstrap/scss/bootstrap';
+
+/*
+@include media-breakpoint-up(xs) { ... }
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }
+*/
+
+@import "typography";
+@import "navbar";
+@import "number_pad";
+@import "operator_pad";
+@import "calculator_pads";
+@import "result_screen";
+@import "memory_pad";
+
+
+body {
+    background-color: lighten(blue, 40%);
+    background-image: url('../images/triangle-mosaic.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+
+    position: relative;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    // z-index: 1;
+
+    pointer-events: none;
+}
+
+.wrapper.content-outer {
+    min-height: 100vh - $header_height;
+
+    @include media-breakpoint-down(md) {
+        min-height: 100vh - $mobile_header_height;
+        padding-bottom: $mobile_footer_height;
+    }
+
+    padding-bottom: $footer_height;
+    pointer-events: none;
+}
+
+.wrapper .content {
+    // z-index: 1;
+    padding-top: $content_padding_top;
+    padding-bottom: $content_padding_bottom;
+    box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
+    min-height: calc(100vh - #{$header_height} - #{$footer_height} - #{$content_padding_total});
+
+    @include media-breakpoint-down(md) {
+        min-height: calc(100vh - #{$mobile_header_height} - #{$mobile_footer_height} - #{$content_padding_total});
+    }
+}
+
+.container.content {
+
+    pointer-events: auto;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    // margin-top: 1rem;
+    // margin-bottom: 1rem;
+
+    background-color: rgba(159, 117, 85, 0.4); //darken(rgba($primary, 0.4), 60%);
+    box-shadow: 0 0 2rem darken(rgba($dark_transparent_primary, 0.7), 60%);
+
+    border-radius: 10px;
+
+    @include media-breakpoint-down(md) {
+        max-width: 95%;
+    }
+}
+
+header,
+footer {
+    background-color: darken(rgb(228, 223, 235), 40%);
+    background-image: url('../images/herringbone.png');
+    background-repeat: repeat;
+    background-position-y: center;
+    background-attachment: fixed;
+
+    pointer-events: auto;
+}
+
+header {
+    height: $header_height;
+
+    @include media-breakpoint-down(md) {
+        height: $mobile_header_height;
+    }
+
+    box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
+    position: relative;
+    // z-index: 2;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+footer {
+    position: absolute;
+    height: $footer_height;
+
+    ul {
+        list-style-type: disc;
+    }
+    ul li {
+        display: inline;
+        margin-right: 0.75rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        height: $mobile_footer_height;
+        // bottom: $mobile_footer_height;
+        ul li {
+            display: block;
+        }
+    }
+
+    width: 100%;
+    // bottom: $footer_height;
+    bottom: 0;
+
+    overflow: hidden;
+
+    z-index: -1;
+
+    padding-top: 2rem;
+}
+
+p img {
+    // max-width: 20%;
+    border-radius: 5px;
+    margin: 0.5rem 1.5rem;
+
+    &.float-right,
+    &.float-left {
+        // on tiny display actually ignore float
+        float: none;
+        margin: 2.2rem 10%;
+        width: 80%;
+
+        @include media-breakpoint-up(md) {
+            margin: 1rem 0.5rem;
+            max-width: 25%;
+            max-height: 80%;
+        }
+    }
+
+    &.float-left {
+        @include media-breakpoint-up(md) {
+            float: left;
+        }
+    }
+
+    &.float-right {
+        @include media-breakpoint-up(md) {
+            float: right;
+        }
+    }
+
+
+}

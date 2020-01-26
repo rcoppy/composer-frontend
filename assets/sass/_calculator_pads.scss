@@ -1,0 +1,54 @@
+.calculator-pads {
+    display: flex;
+    max-width: 100%;
+
+    justify-content: center;
+    flex-direction: row-reverse;
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 1rem;
+
+        width: 20%;
+
+        @include media-breakpoint-down(md) {
+            width: 100%;
+        }
+    }
+
+    .bottom {
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+        align-items: center;
+
+        .top {
+            align-items: center;
+            margin-left: 0;
+        }
+
+        .bottom {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    button {
+        margin: $pad_button_margin; 
+        text-align: center;
+        line-height: 100%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+
+        &.operator {
+            font-size: $operator_font_size;
+        }
+    }
+}
