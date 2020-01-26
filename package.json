@@ -1,7 +1,7 @@
 {
-  "name": "babbel-calculator",
+  "name": "composer-frontend",
   "version": "1.0.0",
-  "description": "for the folks at babbel",
+  "description": "for columbia classical performers score sourcing",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rcoppy/babbel-calculator.git"
+    "url": "git+https://github.com/rcoppy/composer-frontend.git"
   },
   "author": "Alex Rupp-Coppi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rcoppy/babbel-calculator/issues"
+    "url": "https://github.com/rcoppy/composer-frontend/issues"
   },
-  "homepage": "https://github.com/rcoppy/babbel-calculator#readme",
+  "homepage": "https://github.com/rcoppy/composer-frontend#readme",
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -34,6 +34,8 @@
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "sass": "^1.24.5",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
