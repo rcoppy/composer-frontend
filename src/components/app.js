@@ -3,7 +3,6 @@ import Header from './pug/header';
 import ContentMixin from './pug/content_mixin'
 import Footer from './pug/footer';
 import Navbar from './pug/navbar';
-import CalculatorPads from './pug/calculator_pads';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +15,6 @@ const App = () => pug`
 
   ContentMixin
     h2 *beep boop*
-    CalculatorPads
 
   Footer
     p by #[a(href="http://alexrupp.com/") Alex], Jan 2020
