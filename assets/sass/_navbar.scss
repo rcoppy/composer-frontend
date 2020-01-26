@@ -29,9 +29,7 @@
         border-bottom: $border_bottom_width solid transparent;
         padding-top: $border_bottom_width;
 
-        @include transition(border-bottom-color 0.35s ease-in-out);
-        @include transition(background-color 0.35s ease-in-out);
-        @include transition(color 0.15s ease-in-out);
+        @include transition(background-color 0.15s ease-in-out, border-bottom 0.15s ease-in-out, color 0.15s ease-in-out);
     }
 
     a:hover {

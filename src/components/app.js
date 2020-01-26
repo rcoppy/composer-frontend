@@ -8,10 +8,10 @@ import {
   useParams
 } from "react-router-dom";
 
-import Header from './pug/header';
-import ContentMixin from './pug/content_mixin'
-import Footer from './pug/footer';
-import Navbar from './pug/navbar';
+import Header from './pug/layout/header';
+import ContentMixin from './pug/layout/content_mixin'
+import Footer from './pug/layout/footer';
+import Navbar from './pug/layout/navbar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
