@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ComposersListEntry = ({props}) => pug` 
+const ComposersListEntry = (props) => pug` 
     a.composers-list-entry(href=props.composer_url)
       .img-container
         img(src=props.avatar_url)

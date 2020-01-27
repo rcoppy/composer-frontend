@@ -13,6 +13,10 @@ import ContentMixin from './pug/layout/content_mixin'
 import Footer from './pug/layout/footer';
 import Navbar from './pug/layout/navbar';
 
+import About from './pug/content/about';
+import Gallery from './pug/content/gallery';
+import Composers from './pug/content/composers';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,20 +27,19 @@ const App = () => pug`
     Header(
       content=${pug`h1 Best Calculator #[FontAwesomeIcon(icon=faCalculator)]`}
       navLinks=${pug`
-        Link(to="/") Home
+        Link(to="/composers") Composers
         Link(to="/about") About
-        Link(to="/topics") Topics
+        Link(to="/gallery") Gallery
       `})
 
     ContentMixin
-      h2 *beep boop*
       Switch 
         Route(path="/about")
-          h3 Welcome to about
-        Route(path="/topics")
-          h3 Welcome to topics
-        Route(path="/")
-          h3 Welcome to home
+          About
+        Route(path="/gallery")
+          Gallery
+        Route(path="/composers")
+          Composers
 
     Footer
       p by #[a(href="http://alexrupp.com/") Alex], Jan 2020
