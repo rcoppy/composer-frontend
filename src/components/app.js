@@ -16,6 +16,7 @@ import Navbar from './pug/layout/navbar';
 import About from './pug/content/about';
 import Gallery from './pug/content/gallery';
 import Composers from './pug/content/composers';
+import Home from './pug/content/home';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +28,7 @@ const App = () => pug`
     Header(
       content=${pug`h1 Best Calculator #[FontAwesomeIcon(icon=faCalculator)]`}
       navLinks=${pug`
+        Link(to="/") Home
         Link(to="/composers") Composers
         Link(to="/about") About
         Link(to="/gallery") Gallery
@@ -34,6 +36,8 @@ const App = () => pug`
 
     ContentMixin
       Switch 
+        Route(path="/")
+          Home
         Route(path="/about")
           About
         Route(path="/gallery")
