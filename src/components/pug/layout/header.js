@@ -3,8 +3,10 @@ import Navbar from './navbar';
 
 const Header = ({content, navLinks}) => pug` 
   header
-    .container
-      = content
+    .header-wrapper.container      
+      .container
+        = content
+      .logo #[img(src="../../../assets/images/ccp_logo_transparent.png")]
     if navLinks
       Navbar
         = navLinks

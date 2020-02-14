@@ -18,15 +18,12 @@ import Gallery from './pug/content/gallery';
 import Composers from './pug/content/composers';
 import Home from './pug/content/home';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalculator } from '@fortawesome/free-solid-svg-icons';
-
 // import '../../assets/sass/main.scss';
 
 const App = () => pug`
   Router
     Header(
-      content=${pug`h1 Best Calculator #[FontAwesomeIcon(icon=faCalculator)]`}
+      content=${pug`h1 Call for Scores`}
       navLinks=${pug`
         Link(to="/") Home
         Link(to="/composers") Composers
