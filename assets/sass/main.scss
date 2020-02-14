@@ -78,36 +78,75 @@ body {
 }
 
 header {
-    
+
     .header-wrapper {
+        
+        @include media-breakpoint-up(lg) {
+            padding-top: 2rem;
+        }
+        
         width: 95%;
+        max-height: 90%;
         display: flex; 
-        justify-content: center;
+        justify-content: space-between;
+        align-items: flex-end;
     }
 
-    .header-wrapper .container {
-        flex-shrink: 1;
+    .header-wrapper.container {
+        @include media-breakpoint-down(md) {
+            width: 95%; 
+            margin: 0;
+        }
     }
 
     .header-wrapper .logo {
         max-width: 25%;
-        max-height: 4rem;
+        align-self: stretch;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+
         img {
-            width: 100%;
+            position: absolute;
+            display: block;
+            top: 1rem;
+            right: 8vw;
+            width: 25vw;
+
+            @include media-breakpoint-up(lg) {
+                top: 1rem;
+                width: 15vw;
+                right: 6vw;
+            }
+
+            @include media-breakpoint-only(sm) {            
+                top: 1rem;
+                right: 6vw;
+                width: 20vw;
+            }
+
+            @include media-breakpoint-down(xs) {
+                top: 3rem;
+                right: 4vw;
+                width: 38vw;
+            }
+
+            
         }
     }
 
-    background: url('../images/ccp_logo_transparent.png'),
+    background: // url('../images/ccp_logo_transparent.png'),
                 linear-gradient(to bottom, darken(saturate(rgba($primary, 0.6), 20%),14%), 
                                            darken(saturate(rgba($primary, 0.35), 10%),7%)),
                 url('../images/herringbone.png');
-    background-repeat: no-repeat, no-repeat, repeat;
+    background-repeat: no-repeat, repeat;
     
-    background-attachment: scroll, scroll, fixed;
+    background-attachment: scroll, fixed;
 
-    background-size: $header_height * 0.7, auto, auto;
-    background-position-x: 6vh, unset, unset;
-    background-position-y: center, top, center;
+    background-size: auto, auto;
+    background-position-x: unset, unset;
+    background-position-y: top, center;
 
     pointer-events: auto;
     
@@ -115,8 +154,8 @@ header {
 
     @include media-breakpoint-down(md) {
         min-height: $mobile_header_height;
-        background-size: 24vh, auto, auto;
-        background-position: 57vw 10vh, center, center;
+        background-size: auto, auto;
+        background-position: center, center;
     }
 
     box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
