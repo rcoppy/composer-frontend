@@ -23,10 +23,10 @@
 
 
 body {
-    background-color: lighten(blue, 40%);
-    background-image: url('../images/triangle-mosaic.png');
-    background-repeat: repeat;
-    background-attachment: fixed;
+    background: linear-gradient(to bottom, rgba($primary, 0.8), darken(saturate(rgba($primary, 0.35), 10%),7%)), 
+                url('../images/triangle-mosaic.png');
+    background-repeat: no-repeat, repeat;
+    background-attachment: scroll, fixed;
 
     position: relative;
     min-height: 100vh;
@@ -67,7 +67,7 @@ body {
     padding-top: 1rem;
     padding-bottom: 1rem;
 
-    background-color: rgba(159, 117, 85, 0.4); //darken(rgba($primary, 0.4), 60%);
+    background-color: lighten(rgba($secondary, 0.4),19%);
     box-shadow: 0 0 2rem darken(rgba($dark_transparent_primary, 0.7), 60%);
 
     border-radius: 10px;
@@ -79,11 +79,12 @@ body {
 
 header,
 footer {
-    background-color: darken(rgb(228, 223, 235), 40%);
-    background-image: url('../images/herringbone.png');
-    background-repeat: repeat;
-    background-position-y: center;
-    background-attachment: fixed;
+    background: linear-gradient(to bottom, darken(saturate(rgba($primary, 0.6), 20%),14%), 
+                                           darken(saturate(rgba($primary, 0.35), 10%),7%)),
+                url('../images/herringbone.png');
+    background-repeat: no-repeat, repeat;
+    background-position-y: top, center;
+    background-attachment: scroll, fixed;
 
     pointer-events: auto;
 }
