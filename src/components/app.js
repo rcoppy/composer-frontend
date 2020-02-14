@@ -33,7 +33,7 @@ const App = () => pug`
 
     ContentMixin
       Switch 
-        Route(path="/")
+        Route(exact path="/")
           Home
         Route(path="/about")
           About
