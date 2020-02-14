@@ -1,8 +1,7 @@
 import React from 'react';
 
 const ContentMixin = ({children}) => pug`
-  .wrapper.content-outer
-    .content
+  .wrapper
       .container.content
         = children
 `;
