@@ -33,7 +33,6 @@ body {
 
     overflow-x: hidden;
     overflow-y: scroll;
-    // z-index: 1;
 
     pointer-events: none;
 
@@ -44,20 +43,6 @@ body {
         min-height: 100vh;
     }
 }
-
-/* this was necessary in the old absolute positioning model, but not anymore with flexbox */
-/*
-.wrapper.content-outer {
-    min-height: 100vh - $header_height - $footer_height;
-
-    @include media-breakpoint-down(md) {
-        min-height: 100vh - $mobile_header_height - $mobile_footer_height;
-        // padding-bottom: $mobile_footer_height;
-    }
-
-    // padding-bottom: $footer_height;
-    pointer-events: none;
-} */
 
 .wrapper {
     position: relative; // enables z-index
@@ -81,9 +66,6 @@ body {
 
     padding-top: 1rem;
     padding-bottom: 1rem;
-
-    // margin-top: 1rem;
-    // margin-bottom: 1rem;
 
     background-color: rgba(159, 117, 85, 0.4); //darken(rgba($primary, 0.4), 60%);
     box-shadow: 0 0 2rem darken(rgba($dark_transparent_primary, 0.7), 60%);
@@ -128,10 +110,6 @@ header {
 }
 
 footer {
-    // position: absolute;
-    // min-height: $footer_height;
-    
-    // flex-shrink: 1;
 
     display: flex; 
     flex-direction: column-reverse;
@@ -153,13 +131,9 @@ footer {
     }
 
     width: 100%;
-    
-    // bottom: 0;
 
     overflow: hidden;
-
     z-index: -1;
-
     padding-top: 2rem;
 }
 
@@ -193,6 +167,4 @@ p img {
             float: right;
         }
     }
-
-
 }
