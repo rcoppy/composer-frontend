@@ -30,9 +30,20 @@ body {
 
 
     h1, h2 {
-        //font-weight: bold;
-        font-size: 2.5rem;
         font-family: 'Merriweather', serif;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 1rem;
     }
 
     // on smaller screens need bigger font
