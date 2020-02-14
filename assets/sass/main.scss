@@ -23,8 +23,11 @@
 
 
 body {
+
+    @include transition(background-color 0.3s ease-in-out);
+
     background: linear-gradient(to bottom, rgba($primary, 0.8), darken(saturate(rgba($primary, 0.35), 10%),7%)), 
-                url('../images/triangle-mosaic.png');
+                url('../images/papyrus.png');
     background-repeat: no-repeat, repeat;
     background-attachment: scroll, fixed;
 
@@ -62,6 +65,10 @@ body {
 
 .container.content {
 
+    overflow-y: hidden;
+
+    @include transition(height .3s ease);
+    
     pointer-events: auto;
 
     padding-top: 1rem;
@@ -139,7 +146,7 @@ header {
     background: // url('../images/ccp_logo_transparent.png'),
                 linear-gradient(to bottom, darken(saturate(rgba($primary, 0.6), 20%),14%), 
                                            darken(saturate(rgba($primary, 0.35), 10%),7%)),
-                url('../images/herringbone.png');
+                url('../images/symphony.png');
     background-repeat: no-repeat, repeat;
     
     background-attachment: scroll, fixed;
@@ -176,7 +183,7 @@ footer {
 
     background: linear-gradient(to bottom, darken(saturate(rgba($primary, 0.6), 20%),14%), 
                                            darken(saturate(rgba($primary, 0.35), 10%),7%)),
-                url('../images/herringbone.png');
+                url('../images/symphony.png');
     background-repeat: no-repeat, repeat;
     background-position-y: top, center;
     background-attachment: scroll, fixed;

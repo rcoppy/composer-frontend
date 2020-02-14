@@ -26,9 +26,9 @@ const App = () => pug`
       content=${pug`h1 Call for Scores`}
       navLinks=${pug`
         Link(to="/") Home
-        Link(to="/composers") Composers
+        // Link(to="/composers") Composers
         Link(to="/about") About
-        Link(to="/gallery") Gallery
+        // Link(to="/gallery") Gallery
       `})
 
     ContentMixin
@@ -37,10 +37,10 @@ const App = () => pug`
           Home
         Route(path="/about")
           About
-        Route(path="/gallery")
-          Gallery
-        Route(path="/composers")
-          Composers
+        // Route(path="/gallery")
+        //  Gallery
+        // Route(path="/composers")
+        //  Composers
 
     Footer
       p by #[a(href="http://alexrupp.com/") Alex], Jan 2020
