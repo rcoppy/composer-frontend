@@ -7,18 +7,9 @@
 */
 
 //@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Press+Start+2P|Shadows+Into+Light&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Press+Start+2P|Shadows+Into+Light&display=swap');
 
-.numerals {
-    font-family: 'Shadows Into Light', sans-serif;
-    font-weight: bold;
-    font-size: $numeral_font_size;
-}
-
-.result-screen {
-    font-size: $result_screen_font_size;
-    font-family: 'Press Start 2P', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:400,700&display=swap');
 
 body {
 
@@ -33,12 +24,15 @@ body {
     }
 
 
-    font-family: 'Indie Flower', sans-serif;
+    font-family: 'Lato', sans-serif;
     color: $text_color;
 
-    h2 {
-        font-weight: bold;
+
+
+    h1, h2 {
+        //font-weight: bold;
         font-size: 2.5rem;
+        font-family: 'Merriweather', serif;
     }
 
     // on smaller screens need bigger font
@@ -50,7 +44,7 @@ body {
 }
 
 header {
-    font-family: 'Indie Flower', serif;
+    // font-family: 'Indie Flower', serif;
     color: $header_text_color;
     
     h1 {
