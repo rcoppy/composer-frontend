@@ -36,6 +36,10 @@ body {
     // z-index: 1;
 
     pointer-events: none;
+
+    // responsive layout heights via flexbox
+    display: flex;
+    flex-direction: column;
 }
 
 .wrapper.content-outer {
@@ -94,10 +98,10 @@ footer {
 }
 
 header {
-    height: $header_height;
+    min-height: $header_height;
 
     @include media-breakpoint-down(md) {
-        height: $mobile_header_height;
+        min-height: $mobile_header_height;
     }
 
     box-shadow: 0 0 2rem darken($dark_transparent_primary, 30%);
@@ -113,7 +117,7 @@ header {
 
 footer {
     position: absolute;
-    height: $footer_height;
+    min-height: $footer_height;
 
     ul {
         list-style-type: disc;
@@ -124,7 +128,7 @@ footer {
     }
 
     @include media-breakpoint-down(md) {
-        height: $mobile_footer_height;
+        min-height: $mobile_footer_height;
         // bottom: $mobile_footer_height;
         ul li {
             display: block;
