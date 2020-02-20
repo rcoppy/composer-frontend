@@ -18,6 +18,8 @@ import Gallery from './pug/content/gallery';
 import Composers from './pug/content/composers';
 import Home from './pug/content/home';
 
+import ExampleModal from './example_modal';
+
 // import '../../assets/sass/main.scss';
 
 const App = () => pug`
@@ -29,6 +31,7 @@ const App = () => pug`
         // Link(to="/composers") Composers
         Link(to="/about") About
         // Link(to="/gallery") Gallery
+        ExampleModal
       `})
 
     ContentMixin
