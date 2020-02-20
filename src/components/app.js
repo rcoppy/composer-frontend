@@ -22,37 +22,48 @@ import {LoginModal} from './login_modal';
 
 // import '../../assets/sass/main.scss';
 
-const App = () => pug`
-  Router
-    Header(
-      content=${pug`h1 Call for Scores`}
-      navLinks=${pug`
-        Link(to="/") Home
-        // Link(to="/composers") Composers
-        Link(to="/about") About
-        // Link(to="/gallery") Gallery
-        LoginModal
-      `})
+const App = (props) => {
+  <Router>
+    <Header
+      content={<h1>Call for Scores</h1>}
+      navLinks={<>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to={`${this.props.match.url}/login`}>Login</Link>
+      </>} />
 
-    ContentMixin
-      Switch 
-        Route(exact path="/")
-          Home
-        Route(path="/about")
-          About
-        // Route(path="/gallery")
-        //  Gallery
-        // Route(path="/composers")
-        //  Composers
+    <ContentMixin>
+      <Switch> 
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route 
+          path={`${this.props.match.url}/edit`}
+          render={(props) => {
+            return (
+              <LoginModal
+                {...props}
+              />
+            );
+          }}
+        />
+      </Switch>
+    </ContentMixin>
 
-    Footer
-      p by #[a(href="http://alexrupp.com/") Alex], Jan 2020
-      p.mb-0 Using!
-      ul
-        li react-bootstrap
-        li fontawesome
-        li google fonts
-        li subtlepatterns
-`;
+    <Footer>
+      <p>by <a href="http://alexrupp.com/">Alex</a>, Jan 2020</p>
+      <p className="mb-0">Using!</p>
+      <ul>
+        <li>react-bootstrap</li>
+        <li>fontawesome</li>
+        <li>google fonts</li>
+        <li>subtlepatterns</li>
+      </ul>
+    </Footer>
+  </Router>
+};
 
 export default App;

@@ -20,7 +20,7 @@ class LoginModal extends React.Component {
             username: '',
             password: '',
             submitted: false,
-            show: false
+            show: true
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -54,11 +54,7 @@ class LoginModal extends React.Component {
 
         return (
           <>
-            <Button variant="primary" onClick={handleShow}>
-              Launch demo modal
-            </Button>
-      
-            <Modal show={show} onHide={handleClose}>
+            <Modal id="loginModal" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                   <div className="alert alert-info">
                       Username: test<br />
