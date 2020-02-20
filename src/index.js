@@ -4,6 +4,10 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import { store } from './redux/helpers';
 
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+
 import App from "./components/app.js";
 
 console.log(store.getState());
@@ -15,5 +19,7 @@ console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Router>
+      <App/>
+    </Router>
   </Provider>, document.getElementById("root"));

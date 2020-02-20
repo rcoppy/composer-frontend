@@ -14,7 +14,7 @@ class LoginModal extends React.Component {
         super(props);
 
         // reset login status
-        this.props.dispatch(userActions.logout());
+        // this.props.dispatch(userActions.logout());
 
         this.state = {
             username: '',
@@ -49,8 +49,8 @@ class LoginModal extends React.Component {
 
         //const [show, setShow] = useState(false);
   
-        const handleClose = () => this.setState({show: false});
-        const handleShow = () => this.setState({show: true});
+        const handleClose = () => this.props.history.push(this.props.match.url); // this.setState({show: false});
+        // const handleShow = () => this.setState({show: true});
 
         return (
           <>

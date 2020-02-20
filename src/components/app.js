@@ -5,7 +5,8 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
+  withRouter
 } from "react-router-dom";
 
 import Header from './pug/layout/header';
@@ -22,14 +23,18 @@ import {LoginModal} from './login_modal';
 
 // import '../../assets/sass/main.scss';
 
-const App = (props) => {
-  <Router>
+class WrappedApp extends React.Component { 
+  render() {
+    
+    console.log(this.props);
+    
+    return <> 
     <Header
       content={<h1>Call for Scores</h1>}
       navLinks={<>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to={`${this.props.match.url}/login`}>Login</Link>
+        <Link to={`${this.props.match.url}${this.props.match.url === '/' ? '' : '/'}login`}>Login</Link>
       </>} />
 
     <ContentMixin>
@@ -37,19 +42,12 @@ const App = (props) => {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route exact path="/login">
+          <Home />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
-        <Route 
-          path={`${this.props.match.url}/edit`}
-          render={(props) => {
-            return (
-              <LoginModal
-                {...props}
-              />
-            );
-          }}
-        />
       </Switch>
     </ContentMixin>
 
@@ -63,7 +61,18 @@ const App = (props) => {
         <li>subtlepatterns</li>
       </ul>
     </Footer>
-  </Router>
+
+    <Route 
+          path={`${this.props.match.url}/login`}
+          render={(props) => {
+            return (
+              <LoginModal {...props} />
+            );
+          }}
+        />
+  </>};
 };
+
+const App = withRouter(WrappedApp);
 
 export default App;
