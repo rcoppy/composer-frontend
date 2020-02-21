@@ -9,6 +9,9 @@ import {
   withRouter
 } from "react-router-dom";
 
+import { connect } from 'react-redux';
+import { userActions } from '../redux/actions';
+
 import Header from './pug/layout/header';
 import ContentMixin from './pug/layout/content_mixin'
 import Footer from './pug/layout/footer';
@@ -24,8 +27,14 @@ import {LoginModal} from './login_modal';
 // import '../../assets/sass/main.scss';
 
 class WrappedApp extends React.Component { 
+  
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     
+    console.log("hello!");
     console.log(this.props);
     
     return <> 
@@ -34,7 +43,8 @@ class WrappedApp extends React.Component {
       navLinks={<>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to={`${this.props.match.url}${this.props.match.url === '/' ? '' : '/'}login`}>Login</Link>
+      { !this.props.loggedIn && <LoginModal /> }
+      { this.props.loggedIn && <a href="" onClick={dispatch(userActions.logout())}>Log out</a> }
       </>} />
 
     <ContentMixin>
@@ -61,18 +71,18 @@ class WrappedApp extends React.Component {
         <li>subtlepatterns</li>
       </ul>
     </Footer>
-
-    <Route 
-          path={`${this.props.match.url}${this.props.match.url === '/' ? '' : '/'}login`}
-          render={(props) => {
-            return (
-              <LoginModal {...props} />
-            );
-          }}
-        />
   </>};
 };
 
-const App = withRouter(WrappedApp);
+function mapStateToProps(state) {
+  const { loggingIn, loggedIn } = state.authentication;
+  return {
+      loggingIn, loggedIn
+  };
+}
+
+const appWithRouter = withRouter(WrappedApp);
+
+const App = connect(mapStateToProps)(appWithRouter);
 
 export default App;

@@ -20,7 +20,7 @@ class LoginModal extends React.Component {
             username: '',
             password: '',
             submitted: false,
-            show: true
+            show: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -44,16 +44,25 @@ class LoginModal extends React.Component {
     }
 
     render() {
-        const { loggingIn } = this.props;
+        const { loggingIn, loggedIn } = this.props;
         const { username, password, submitted, show } = this.state;
 
         //const [show, setShow] = useState(false);
   
-        const handleClose = () => this.props.history.push(this.props.match.url); // this.setState({show: false});
-        // const handleShow = () => this.setState({show: true});
+        const handleClose = () => this.setState({show: false});
+        const handleShow = () => {
+            if (!loggedIn) {
+                this.setState({show: true});
+            }
+        };
+
+        if (loggedIn) {
+            handleClose();
+        }
 
         return (
           <>
+            <a href="" onClick={handleShow}>Login</a> 
             <Modal id="loginModal" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                   <div className="alert alert-info">
@@ -99,9 +108,9 @@ class LoginModal extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
+    const { loggingIn, loggedIn } = state.authentication;
     return {
-        loggingIn
+        loggingIn, loggedIn
     };
 }
 
