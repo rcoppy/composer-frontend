@@ -42,7 +42,7 @@ class WrappedApp extends React.Component {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <Home />
         </Route>
         <Route path="/about">
@@ -63,7 +63,7 @@ class WrappedApp extends React.Component {
     </Footer>
 
     <Route 
-          path={`${this.props.match.url}/login`}
+          path={`${this.props.match.url}${this.props.match.url === '/' ? '' : '/'}login`}
           render={(props) => {
             return (
               <LoginModal {...props} />
