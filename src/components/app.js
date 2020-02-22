@@ -22,6 +22,8 @@ import Gallery from './pug/content/gallery';
 import Composers from './pug/content/composers';
 import Home from './pug/content/home';
 
+import Dashboard from './dashboard';
+
 import {LoginModal} from './login_modal';
 
 // import '../../assets/sass/main.scss';
@@ -36,6 +38,8 @@ class WrappedApp extends React.Component {
     
     console.log("hello!");
     console.log(this.props);
+
+    const { user } = this.props || null; 
     
     return <> 
     <Header
@@ -43,8 +47,17 @@ class WrappedApp extends React.Component {
       navLinks={<>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
+        <Link to="/composers">Composers</Link>
+      
+      { this.props.loggedIn && (user.is_admin || user.is_curator) && <Link to="/gallery">Submissions</Link> }
+      
+      { this.props.loggedIn && <Link to="/dashboard">Dashboard</Link> }
+
       { !this.props.loggedIn && <LoginModal /> }
       { this.props.loggedIn && <a href="" onClick={() => this.props.dispatch(userActions.logout())}>Logout</a> }
+      
+      
+      
       </>} />
 
     <ContentMixin>
@@ -57,6 +70,15 @@ class WrappedApp extends React.Component {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/gallery">
+          <Gallery />
+        </Route>
+        <Route path="/composers">
+          <Composers />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
       </Switch>
     </ContentMixin>
@@ -75,9 +97,9 @@ class WrappedApp extends React.Component {
 };
 
 function mapStateToProps(state) {
-  const { loggingIn, loggedIn } = state.authentication;
+  const { loggingIn, loggedIn, user } = state.authentication;
   return {
-      loggingIn, loggedIn
+      loggingIn, loggedIn, user
   };
 }
 
