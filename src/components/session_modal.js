@@ -25,6 +25,7 @@ class SessionModal extends React.Component {
         this.state = {
             username: '',
             password: '',
+            verifyPassword: '',
             submitted: false,
             show: false,
             sessionMode: this.SESSION_MODES.LOGIN
@@ -43,7 +44,7 @@ class SessionModal extends React.Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const { username, password, sessionMode } = this.state;
+        const { username, password, sessionMode, verifyPassword } = this.state;
         const { dispatch } = this.props;
         
         const login = () => {
@@ -53,7 +54,7 @@ class SessionModal extends React.Component {
         }
         
         const signup = () => {
-            if (username && password) {
+            if (username && (password === verifyPassword)) {
                 dispatch(userActions.signup(username, password));
             }
         }
@@ -80,7 +81,7 @@ class SessionModal extends React.Component {
 
     render() {
         const { loggingIn, loggedIn, alertType, alertMessage } = this.props;
-        const { username, password, submitted, show } = this.state;
+        const { username, password, submitted, show, sessionMode } = this.state;
 
         //const [show, setShow] = useState(false);
   
@@ -91,6 +92,28 @@ class SessionModal extends React.Component {
                 this.setState({show: true});
             }
         };
+
+        const titleFromSessionMode = () => {
+            switch(sessionMode) {
+                case this.SESSION_MODES.LOGIN:
+                    return "Login";
+                case this.SESSION_MODES.SIGNUP:
+                    return "Sign up";
+                case this.SESSION_MODES.RESET_PWD:
+                    return "Forgot your password?";
+            }
+        }
+
+        const actionFromSessionMode = () => {
+            switch(sessionMode) {
+                case this.SESSION_MODES.LOGIN:
+                    return "Login";
+                case this.SESSION_MODES.SIGNUP:
+                    return "Sign up";
+                case this.SESSION_MODES.RESET_PWD:
+                    return "Reset password";
+            }
+        }
 
         if (loggedIn) {
             console.log("closing out");
@@ -105,7 +128,7 @@ class SessionModal extends React.Component {
                   <div className={`alert ${alertType}`}>
                       {`${alertMessage}`}
                   </div>
-                <Modal.Title>Login</Modal.Title>
+                <Modal.Title>{titleFromSessionMode()}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <form name="form" onSubmit={this.handleSubmit}>
@@ -116,23 +139,32 @@ class SessionModal extends React.Component {
                             <div className="help-block">Username is required</div>
                         }
                     </div>
+                    {sessionMode != this.SESSION_MODES.RESET_PWD && 
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
                         {submitted && !password &&
                             <div className="help-block">Password is required</div>
                         }
-                    </div>
-                    <div className="form-group">
-                        
-                    </div>
+                    </div>}
+                    {sessionMode == this.SESSION_MODES.SIGNUP &&
+                    <div className={'form-group' + (submitted && (password != verifyPassword) ? ' has-error' : '')}>
+                        <label htmlFor="verifyPassword">Re-Enter Password</label>
+                        <input type="password" className="form-control" name="verifyPassword" value={verifyPassword} onChange={this.handleChange} />
+                        {submitted && !password &&
+                            <div className="help-block">Passwords must match</div>
+                        }
+                    </div>}
                 </form>
               </Modal.Body>
               <Modal.Footer>
+                <a href="" onClick={}>Sign up</a>
+                <a href="" onClick={}>Reset password</a>
+                <a href="" onClick={}>Login</a>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={this.handleSubmit}>Login</Button>
+                <Button variant="primary" onClick={this.handleSubmit}>{actionFromSessionMode()}</Button>
                 {loggingIn &&
                     <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 }
