@@ -35,6 +35,15 @@ class SessionModal extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.signedUp !== prevProps.signedUp || this.props.resetPwd !== prevProps.resetPwd) {
+            if (this.props.signedUp || this.props.resetPwd) {
+                this.setState({sessionMode: this.SESSION_MODES.LOGIN});
+            }
+        }
+    }
+
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
@@ -80,7 +89,7 @@ class SessionModal extends React.Component {
     }
 
     render() {
-        const { loggingIn, loggedIn, alertType, alertMessage } = this.props;
+        const { resettingPwd, resetPwd, signingUp, signedUp, loggingIn, loggedIn, alertType, alertMessage } = this.props;
         const { username, password, submitted, show, sessionMode, verifyPassword } = this.state;
 
         //const [show, setShow] = useState(false);
@@ -96,6 +105,13 @@ class SessionModal extends React.Component {
         const swapSessionMode = (e, mode) => {
             e.preventDefault();
             this.setState({sessionMode: mode});
+        }
+
+        const checkStatusChange = () => {
+            if (loggedIn) {
+                console.log("closing out");
+                handleClose();
+            }
         }
 
         const titleFromSessionMode = () => {
@@ -120,22 +136,19 @@ class SessionModal extends React.Component {
             }
         }
 
-        if (loggedIn) {
-            console.log("closing out");
-            handleClose();
-        }
+        checkStatusChange();
 
         return (
           <>
             <a href="" onClick={handleShow}>Login</a> 
             <Modal id="loginModal" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                  <div className={`alert ${alertType}`}>
-                      {`${alertMessage}`}
-                  </div>
                 <Modal.Title>{titleFromSessionMode()}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
+                {alertMessage && <div className={`alert ${alertType}`}>
+                      {`${alertMessage}`}
+                  </div>}
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
                         <label htmlFor="username">Username</label>
@@ -156,7 +169,7 @@ class SessionModal extends React.Component {
                     <div className={'form-group' + (submitted && (password !== verifyPassword) ? ' has-error' : '')}>
                         <label htmlFor="verifyPassword">Re-Enter Password</label>
                         <input type="password" className="form-control" name="verifyPassword" value={verifyPassword} onChange={this.handleChange} />
-                        {submitted && !password &&
+                        {password !== verifyPassword &&
                             <div className="help-block">Passwords must match</div>
                         }
                     </div>}
@@ -173,7 +186,7 @@ class SessionModal extends React.Component {
                   Close
                 </Button>
                 <Button variant="primary" onClick={this.handleSubmit}>{actionFromSessionMode()}</Button>
-                {loggingIn &&
+                {(loggingIn || resettingPwd || signingUp) &&
                     <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 }
               </Modal.Footer>
@@ -184,13 +197,15 @@ class SessionModal extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { loggingIn, loggedIn } = state.authentication;
+    const { loggingIn, loggedIn, signedUp, signingUp, resetPwd, resettingPwd } = state.authentication;
     const alertType = state.alert.type;
     const alertMessage = state.alert.message;
 
     return {
         loggingIn, loggedIn,
-        alertType, alertMessage
+        alertType, alertMessage,
+        signingUp, signedUp,
+        resetPwd, resettingPwd
     };
 }
 
