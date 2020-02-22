@@ -44,7 +44,7 @@ class WrappedApp extends React.Component {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
       { !this.props.loggedIn && <LoginModal /> }
-      { this.props.loggedIn && <a href="" onClick={dispatch(userActions.logout())}>Log out</a> }
+      { this.props.loggedIn && <a href="" onClick={() => this.props.dispatch(userActions.logout())}>Logout</a> }
       </>} />
 
     <ContentMixin>

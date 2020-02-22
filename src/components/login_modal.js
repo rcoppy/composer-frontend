@@ -44,19 +44,21 @@ class LoginModal extends React.Component {
     }
 
     render() {
-        const { loggingIn, loggedIn } = this.props;
+        const { loggingIn, loggedIn, alertType, alertMessage } = this.props;
         const { username, password, submitted, show } = this.state;
 
         //const [show, setShow] = useState(false);
   
         const handleClose = () => this.setState({show: false});
-        const handleShow = () => {
+        const handleShow = (e) => {
+            e.preventDefault();
             if (!loggedIn) {
                 this.setState({show: true});
             }
         };
 
         if (loggedIn) {
+            console.log("closing out");
             handleClose();
         }
 
@@ -65,9 +67,8 @@ class LoginModal extends React.Component {
             <a href="" onClick={handleShow}>Login</a> 
             <Modal id="loginModal" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                  <div className="alert alert-info">
-                      Username: test<br />
-                      Password: test
+                  <div className={`alert ${alertType}`}>
+                      {`${alertMessage}`}
                   </div>
                 <Modal.Title>Login</Modal.Title>
               </Modal.Header>
@@ -109,8 +110,12 @@ class LoginModal extends React.Component {
 
 function mapStateToProps(state) {
     const { loggingIn, loggedIn } = state.authentication;
+    const alertType = state.alert.type;
+    const alertMessage = state.alert.message;
+
     return {
-        loggingIn, loggedIn
+        loggingIn, loggedIn,
+        alertType, alertMessage
     };
 }
 
