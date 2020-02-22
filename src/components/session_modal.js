@@ -93,6 +93,11 @@ class SessionModal extends React.Component {
             }
         };
 
+        const swapSessionMode = (e, mode) => {
+            e.preventDefault();
+            this.setState({sessionMode: mode});
+        }
+
         const titleFromSessionMode = () => {
             switch(sessionMode) {
                 case this.SESSION_MODES.LOGIN:
@@ -139,7 +144,7 @@ class SessionModal extends React.Component {
                             <div className="help-block">Username is required</div>
                         }
                     </div>
-                    {sessionMode != this.SESSION_MODES.RESET_PWD && 
+                    {sessionMode !== this.SESSION_MODES.RESET_PWD && 
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
@@ -148,7 +153,7 @@ class SessionModal extends React.Component {
                         }
                     </div>}
                     {sessionMode == this.SESSION_MODES.SIGNUP &&
-                    <div className={'form-group' + (submitted && (password != verifyPassword) ? ' has-error' : '')}>
+                    <div className={'form-group' + (submitted && (password !== verifyPassword) ? ' has-error' : '')}>
                         <label htmlFor="verifyPassword">Re-Enter Password</label>
                         <input type="password" className="form-control" name="verifyPassword" value={verifyPassword} onChange={this.handleChange} />
                         {submitted && !password &&
@@ -158,9 +163,12 @@ class SessionModal extends React.Component {
                 </form>
               </Modal.Body>
               <Modal.Footer>
-                <a href="" onClick={}>Sign up</a>
-                <a href="" onClick={}>Reset password</a>
-                <a href="" onClick={}>Login</a>
+                {sessionMode !== this.SESSION_MODES.SIGNUP &&
+                 <a href="" onClick={(e) => swapSessionMode(e, this.SESSION_MODES.SIGNUP)}>Sign up</a>}
+                {sessionMode !== this.SESSION_MODES.RESET_PWD &&
+                 <a href="" onClick={(e) => swapSessionMode(e, this.SESSION_MODES.RESET_PWD)}>Reset password</a>}
+                {sessionMode !== this.SESSION_MODES.LOGIN &&
+                 <a href="" onClick={(e) => swapSessionMode(e, this.SESSION_MODES.LOGIN)}>Login</a>}
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
