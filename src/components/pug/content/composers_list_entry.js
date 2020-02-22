@@ -1,13 +1,16 @@
 import React from 'react';
 
-const ComposersListEntry = (props) => pug` 
-    a.composers-list-entry(href=props.composer_url)
-      .img-container
-        img(src=props.avatar_url)
-      .text-copy
-        h3= props.composer_name
-        p= props.composer_bio
-`;
+const ComposersListEntry = (props) => <> 
+    <a className="composers-list-entry" href={props.composer_url}>
+      <div className="img-container">
+        <img src={props.avatar_url}></img>
+      </div>
+      <div className="text-copy">
+        <h3>{props.composer_name}</h3>
+        <p>{props.composer_bio}</p>
+      </div>
+    </a>
+</>;
 
 export default ComposersListEntry;
     
