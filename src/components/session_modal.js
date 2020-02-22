@@ -54,13 +54,13 @@ class SessionModal extends React.Component {
         }
         
         const signup = () => {
-            if (username && (password === verifyPassword)) {
+            if (username && password && verifyPassword && (password === verifyPassword)) {
                 dispatch(userActions.signup(username, password));
             }
         }
 
         const resetPwd = () => {
-            if (username && password) {
+            if (username) {
                 dispatch(userActions.resetPwd(username, password));
             }
         }
