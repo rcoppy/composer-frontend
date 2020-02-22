@@ -81,7 +81,7 @@ class SessionModal extends React.Component {
 
     render() {
         const { loggingIn, loggedIn, alertType, alertMessage } = this.props;
-        const { username, password, submitted, show, sessionMode } = this.state;
+        const { username, password, submitted, show, sessionMode, verifyPassword } = this.state;
 
         //const [show, setShow] = useState(false);
   
