@@ -71,7 +71,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/api/v1/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
