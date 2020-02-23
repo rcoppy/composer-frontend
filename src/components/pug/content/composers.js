@@ -21,9 +21,9 @@ const Composers = () => {
   <p>Students registered to submit scores!</p>
   
   <div className="composers-list">
-    {filteredUsers.map((user, key) => {
+    {filteredUsers.map((user, i) => {
       return <ComposersListEntry composer_name={`${user.first_name} ${user.last_name}`} composer_bio={user.bio} 
-              composer_url={`${user.id}`} avatar_url={user.photo}/>
+              composer_url={`${user.id}`} avatar_url={user.photo} key={i}/>
     })}    
   </div>
 </>};
