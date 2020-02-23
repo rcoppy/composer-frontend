@@ -1,7 +1,7 @@
 import React from 'react';
 import ComposersListEntry from './composers_list_entry';
 import {useSelector, useDispatch} from 'react-redux';
-import { userActions } from '../redux/actions';
+import { userActions } from '../../../redux/actions';
 
 const Composers = () => {
 
@@ -12,9 +12,9 @@ const Composers = () => {
     dispatch(userActions.getAll());
   }
   
-  const filteredUsers = users.filter((user) => {
-    return user.first_name && user.last_name && !user.is_deleted && !is_admin && !is_curator;
-  });
+  const filteredUsers = users ? users.filter((user) => {
+    return user && user.first_name && user.last_name && !user.is_deleted && !user.is_admin && !user.is_curator;
+  }) : [];
 
   return <>
   <h2>Composers</h2>
